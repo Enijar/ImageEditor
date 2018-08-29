@@ -10,18 +10,18 @@ export default class ImageRenderer extends BaseRenderer {
 
         const {width, height} = ScaledImage(State.width, State.height);
         const {x, y} = CenteredImage(width, height);
-        State.image.width = width;
-        State.image.height = height;
-        State.image.x = x;
-        State.image.y = y;
+        State.image.width = width - (State.padding * 2);
+        State.image.height = height - (State.padding * 2);
+        State.image.x = x + State.padding;
+        State.image.y = y + State.padding;
     }
 
     update() {
         if (State.mouse.down) {
-            const MIN_X = 0;
-            const MAX_X = State.width - State.image.width;
-            const MIN_Y = 0;
-            const MAX_Y = State.height - State.image.height;
+            const MIN_X = State.padding;
+            const MAX_X = State.width - State.image.width - State.padding;
+            const MIN_Y = State.padding;
+            const MAX_Y = State.height - State.image.height - State.padding;
 
             let x = State.mouse.x - State.image.startX;
             let y = State.mouse.y - State.image.startY;

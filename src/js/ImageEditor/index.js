@@ -2,6 +2,7 @@ import State from "./State";
 import BackgroundRenderer from "../Renderers/BackgroundRenderer";
 import ImageRenderer from "../Renderers/ImageRenderer";
 import GUIRenderer from "../Renderers/GUIRenderer";
+import GUIResizeRenderer from "../Renderers/GUI/GUIResizeRenderer";
 import MouseEvents from "../Functions/MouseEvents";
 
 export default class ImageEditor {
@@ -17,7 +18,8 @@ export default class ImageEditor {
         this.renderers = [
             new BackgroundRenderer(),
             new ImageRenderer(),
-            new GUIRenderer()
+            new GUIRenderer(),
+            new GUIResizeRenderer()
         ];
 
         this.setup();
