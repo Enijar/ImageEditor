@@ -4,6 +4,7 @@ import ImageRenderer from "../Renderers/ImageRenderer";
 import GUIRenderer from "../Renderers/GUIRenderer";
 import GUIResizeRenderer from "../Renderers/GUI/GUIResizeRenderer";
 import MouseEvents from "../Functions/MouseEvents";
+import SortBy from "../Functions/SortBy";
 
 export default class ImageEditor {
     constructor(props = {}) {
@@ -46,25 +47,11 @@ export default class ImageEditor {
 
         this.ctx.clearRect(0, 0, State.width, State.height);
 
-        this.getSortedRenderers().map(renderer => {
+        SortBy(this.renderers, 'zIndex').map(renderer => {
             renderer.update();
             renderer.render();
 
             this.ctx.drawImage(renderer.canvas, 0, 0, renderer.width, renderer.height);
         });
     };
-
-    getSortedRenderers() {
-        return this.renderers.sort((a, b) => {
-            if (a.zIndex > b.zIndex) {
-                return 1;
-            }
-
-            if (a.zIndex < b.zIndex) {
-                return -1;
-            }
-
-            return 0;
-        });
-    }
 }
