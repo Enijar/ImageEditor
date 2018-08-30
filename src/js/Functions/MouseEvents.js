@@ -1,4 +1,5 @@
 import State from "../ImageEditor/State";
+import InsideBounds from "./InsideBounds";
 
 export default canvas => {
     const getMousePosition = event => {
@@ -26,6 +27,7 @@ export default canvas => {
             State.image.startY = y - State.image.y;
         }
 
+        State.image.movable = InsideBounds(State.mouse, State.image);
         State.mouse.down = true;
     };
 

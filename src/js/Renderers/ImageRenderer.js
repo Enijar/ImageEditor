@@ -17,7 +17,7 @@ export default class ImageRenderer extends BaseRenderer {
     }
 
     update() {
-        if (State.mouse.down) {
+        if (State.mouse.down && State.image.movable) {
             const MIN_X = State.padding;
             const MAX_X = State.width - State.image.width - State.padding;
             const MIN_Y = State.padding;
